@@ -44,6 +44,31 @@ class FakeCocktailsAPI: CocktailsAPI {
         .eraseToAnyPublisher()
     }
     
+    func fetchCocktails(_ completion: @escaping (_ success: Bool, _ results: Cocktails?, _ error: String?) -> Void) {
+        let error = CocktailsAPIError.unavailable
+        if case let .count(count) = failure {
+            failure = count - 1 == 0 ? .never : .count(count - 1)
+            queue.async {
+                sleep(3)
+//                let error = CocktailsAPIError.unavailable
+                completion(false, nil, error.localizedDescription)
+            }
+            return
+        }
+        let data = jsonData
+        queue.async {
+            sleep(3)
+            do {
+                let model = try JSONDecoder().decode(Cocktails.self, from: data)
+                completion(true, model, nil)
+            } catch {
+                completion(false, nil, error.localizedDescription)
+            }
+        }
+    }
+    
+    /*
+     original
     func fetchCocktails(_ handler: @escaping (Result<Data, CocktailsAPIError>) -> Void) {
         if case let .count(count) = failure {
             failure = count - 1 == 0 ? .never : .count(count - 1)
@@ -59,4 +84,5 @@ class FakeCocktailsAPI: CocktailsAPI {
             handler(.success(data))
         }
     }
+     */
 }

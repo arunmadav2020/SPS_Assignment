@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct CocktailCellViewModel {
+    var name: String
+    var shortDescription: String
+    var favourite: Bool = false
+}

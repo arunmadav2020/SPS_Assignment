@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+enum CocktailType: String, Codable {
+    case alcoholic
+    case nonAlcoholic = "non-alcoholic"
+}

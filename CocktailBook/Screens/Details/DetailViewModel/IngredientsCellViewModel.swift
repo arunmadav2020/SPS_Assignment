@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct IngredientsCellViewModel {
+    var ingredientName: String
+}
