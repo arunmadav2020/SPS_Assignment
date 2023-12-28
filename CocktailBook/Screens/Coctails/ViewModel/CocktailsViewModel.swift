@@ -45,10 +45,22 @@ class CocktailsViewModel: NSObject {
             }
         }
     }
+    func consideringfavourites(cocktails: Cocktails)->Cocktails{
+        let cocktailsIncludingFavourite = cocktails.map {
+            if(favourites.contains($0.id)){
+                var favouriteCocktail = $0
+                favouriteCocktail.favourite = true
+                return favouriteCocktail
+            }
+            return $0
+        }
+        return cocktailsIncludingFavourite
+    }
     
     func fetchData(cocktails: Cocktails) {
         
-        let sortedAlphabetically = cocktails.sorted {$0.name<$1.name}
+        let inclusiveOfFavourites = consideringfavourites(cocktails: cocktails).sorted { $0.name < $1.name }
+        let sortedAlphabetically = inclusiveOfFavourites.sorted {($0.favourite ?? false && !($1.favourite ?? false))}
 //        print("this is the sorted array \(sortedAlphabetically)")
         
         var cellViewModels = [CocktailCellViewModel]()

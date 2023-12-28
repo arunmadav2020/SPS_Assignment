@@ -15,21 +15,28 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var longDescriptionLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    
-    var addOrRemoveFavourites: ((String, Bool) -> Void)?
-    var UpdateFavourites: ((String, Bool) -> Void)?
     var viewModel :CocktailDetailsViewModel?
     var isFavouriteChanged = false
     var backButtonTap: needsToUpdate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         initView()
         initViewModel()
+        // Do any additional setup after loading the view.
+        
     }
-
+    init(viewModel: CocktailDetailsViewModel){
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func initView(){
         setupNavigationBar()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -84,7 +91,6 @@ class DetailViewController: UIViewController {
             }
         }
     }
-
 }
 extension DetailViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

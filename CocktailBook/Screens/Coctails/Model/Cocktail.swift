@@ -16,4 +16,5 @@ struct Cocktail: Codable{
     let preparationMinutes: Int
     let imageName: String
     let ingredients: [String]
+    var favourite: Bool? = false
 }

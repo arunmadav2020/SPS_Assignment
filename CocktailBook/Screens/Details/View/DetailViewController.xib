@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -65,11 +65,8 @@
                                         <constraint firstAttribute="bottom" secondItem="kKL-k8-qzx" secondAttribute="bottom" id="xwX-3i-ovG"/>
                                     </constraints>
                                 </view>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yLj-nq-9bN">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="393" placeholderIntrinsicHeight="366.33333333333331" translatesAutoresizingMaskIntoConstraints="NO" id="yLj-nq-9bN">
                                     <rect key="frame" x="0.0" y="30" width="393" height="366.33333333333331"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="366.33333333333331" id="3ZO-Gq-8xh"/>
-                                    </constraints>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQM-Zh-2kd" userLabel="DescriptionView">
                                     <rect key="frame" x="0.0" y="396.33333333333331" width="393" height="58.666666666666686"/>
@@ -108,6 +105,7 @@
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="height" constant="858" id="N2i-CP-k1M"/>
+                                <constraint firstItem="yLj-nq-9bN" firstAttribute="width" secondItem="o8v-wS-TzO" secondAttribute="width" id="bcV-Lx-0wO"/>
                             </constraints>
                         </stackView>
                     </subviews>

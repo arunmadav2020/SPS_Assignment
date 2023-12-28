@@ -11,6 +11,7 @@ class CocktailViewController: UIViewController {
     
     @IBOutlet weak var filterSegment: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    let loadingViewController = LoadingViewController()
 
 //    lazy var viewModel: CocktailsViewModel = {
 //        CocktailsViewModel()
@@ -23,6 +24,7 @@ class CocktailViewController: UIViewController {
         // Do any additional setup after loading the view.
         initView()
         initViewModel()
+        add(loadingViewController)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,7 +38,7 @@ class CocktailViewController: UIViewController {
         
         filterSegment.selectedSegmentIndex = 0
         filterSegment.isUserInteractionEnabled = false
-    
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorColor = .white
@@ -50,6 +52,7 @@ class CocktailViewController: UIViewController {
         viewModel.getCocktails()
         viewModel.reloadTableView = { [weak self] in
             DispatchQueue.main.async {
+                self?.loadingViewController.remove()
                 self?.tableView.reloadData()
                 self?.view.layoutIfNeeded()
                 
@@ -72,10 +75,13 @@ class CocktailViewController: UIViewController {
     }
     
     func showDetailsPage(cocktailDetailViewModel: CocktailDetailsViewModel){
-        let detailsPage = DetailViewController()
-        detailsPage.viewModel = cocktailDetailViewModel
+        let detailsPage = DetailViewController(viewModel: cocktailDetailViewModel)
+//        detailsPage.viewModel = cocktailDetailViewModel
         detailsPage.title = cocktailDetailViewModel.name
         detailsPage.backButtonTap = { [weak self] identifier, isFav in
+            if let loadingVC = self?.loadingViewController{
+                self?.add(loadingVC)
+            }
             if (isFav){
                 self?.viewModel.addToFavourites(identifier: identifier)
             }
@@ -95,6 +101,7 @@ extension CocktailViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVM = viewModel.getDetDetailViewModel(at: indexPath)
         showDetailsPage(cocktailDetailViewModel: detailVM)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
