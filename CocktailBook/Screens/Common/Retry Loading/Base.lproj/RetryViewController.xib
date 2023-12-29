@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RetryViewController" customModule="CocktailBook" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wHT-89-lzI">
+                    <rect key="frame" x="20" y="389" width="353" height="74"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="F05-eE-6dh">
+                            <rect key="frame" x="0.0" y="0.0" width="353" height="74"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, an error occurred while getting data from the server." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axB-pH-OF8">
+                                    <rect key="frame" x="0.0" y="0.0" width="353" height="33.666666666666664"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wdw-YV-bXs">
+                                    <rect key="frame" x="0.0" y="35.666666666666686" width="353" height="38.333333333333343"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="goforward" catalog="system" title="Reload"/>
+                                    <connections>
+                                        <action selector="reloadButtonClicked:" destination="-1" eventType="touchUpInside" id="1l3-SM-Utm"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="F05-eE-6dh" firstAttribute="top" secondItem="wHT-89-lzI" secondAttribute="top" id="1vU-T2-5DR"/>
+                        <constraint firstAttribute="bottom" secondItem="F05-eE-6dh" secondAttribute="bottom" id="Jdg-fP-bbb"/>
+                        <constraint firstAttribute="trailing" secondItem="F05-eE-6dh" secondAttribute="trailing" id="SV6-wd-Sv1"/>
+                        <constraint firstItem="F05-eE-6dh" firstAttribute="centerY" secondItem="wHT-89-lzI" secondAttribute="centerY" id="mmV-bZ-4Ds"/>
+                        <constraint firstItem="F05-eE-6dh" firstAttribute="leading" secondItem="wHT-89-lzI" secondAttribute="leading" id="qW6-Hp-V3U"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="wHT-89-lzI" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="TfP-6g-ozE"/>
+                <constraint firstAttribute="trailing" secondItem="wHT-89-lzI" secondAttribute="trailing" constant="20" symbolic="YES" id="hhU-LE-4Nv"/>
+                <constraint firstItem="wHT-89-lzI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" symbolic="YES" id="oQd-gN-Shp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="19" y="0.0"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="goforward" catalog="system" width="119" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
